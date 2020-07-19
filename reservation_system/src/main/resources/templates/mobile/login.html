@@ -1,0 +1,344 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta >
+    <title>用户认证页面</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes">
+    <link href="//t.vvo2o.com/tpl/Wap/default/common/css/userinfo/fans.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="//t.vvo2o.com/tpl/Wap/default/common/js/jquery.js"></script>
+    <style id="__WXWORK_INNER_SCROLLBAR_CSS">::-webkit-scrollbar {
+        width: 12px !important;
+        height: 12px !important;
+    }
+
+    ::-webkit-scrollbar-track:vertical {
+    }
+
+    ::-webkit-scrollbar-thumb:vertical {
+        background-color: rgba(136, 141, 152, 0.5) !important;
+        border-radius: 10px !important;
+        background-clip: content-box !important;
+        border: 2px solid transparent !important;
+    }
+
+    ::-webkit-scrollbar-track:horizontal {
+    }
+
+    ::-webkit-scrollbar-thumb:horizontal {
+        background-color: rgba(136, 141, 152, 0.5) !important;
+        border-radius: 10px !important;
+        background-clip: content-box !important;
+        border: 2px solid transparent !important;
+    }
+
+    ::-webkit-resizer {
+        display: none !important;
+    }</style>
+    <script type="text/javascript">
+        window.jQuery || document.write('<script type="text/javascript" src="//t.vvo2o.com/tpl/Wap/default/common/css/guajiang/js/jquery.js">\x3C/script>')
+    </script>
+    <link rel="stylesheet" href="http://t.vvo2o.com/tpl/static/artDialog/skins/default.css?4.1.6">
+    <script src="//t.vvo2o.com/tpl/static/artDialog/jquery.artDialog.js?skin=default"></script>
+    <script src="//t.vvo2o.com/tpl/static/artDialog/plugins/iframeTools.js"></script>
+    <script src="//t.vvo2o.com/tpl/static/upyun.js?2013"></script>
+    <style>
+        .footFix {
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 99;
+        }
+
+        #footReturn a,
+        #footReturn2 a {
+            display: block;
+            line-height: 41px;
+            color: #fff;
+            text-shadow: 1px 1px #282828;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        #footReturn,
+        #footReturn2 {
+            z-index: 89;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            width: 100%;
+            outline: 0 none;
+            overflow: visible;
+            Unknown property name .
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 0;
+            height: 41px;
+            opacity: .95;
+            border-top: 1px solid #181818;
+            box-shadow: inset 0 1px 2px #b6b6b6;
+            background-color: #515151;
+            Invalid property value .
+            background-image: -ms-linear-gradient(top, #838383, #202020);
+            background-image: -webkit-linear-gradient(top, #838383, #202020);
+            Invalid property value .
+            background-image: -moz-linear-gradient(top, #838383, #202020);
+            Invalid property value .
+            background-image: -o-linear-gradient(top, #838383, #202020);
+            background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#838383), to(#202020));
+            Invalid property value .
+            filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#838383', endColorstr='#202020');
+            Unknown property name .
+            -ms-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#838383', endColorstr='#202020');
+        }
+    </style>
+    <style>
+        .mypor {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            height: auto;
+            width: auto;
+        }
+
+        .mypor img[src=''] {
+            display: none;
+        }
+
+        .mya_upload {
+            background-color: #179f00;
+            /*padding: 6px 20px;*/
+            font-size: 16px;
+            text-decoration: none;
+            border: 1px solid #0b8e00;
+            color: white;
+            background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #179f00), color-stop(1, #5dd300));
+            box-shadow: 0 1px 0 #94e700 inset, 0 1px 2px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            color: #fff;
+            display: block;
+            text-align: center;
+            text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+            width: 140px;
+        }
+    </style>
+</head>
+<body id="fans">
+<div class="" style="display: none; position: absolute;">
+    <div class="aui_outer">
+        <table class="aui_border">
+            <tbody>
+            <tr>
+                <td class="aui_nw"></td>
+                <td class="aui_n"></td>
+                <td class="aui_ne"></td>
+            </tr>
+            <tr>
+                <td class="aui_w"></td>
+                <td class="aui_c">
+                    <div class="aui_inner">
+                        <table class="aui_dialog">
+                            <tbody>
+                            <tr>
+                                <td colspan="2" class="aui_header">
+                                    <div class="aui_titleBar">
+                                        <div class="aui_title" style="cursor: move;"></div>
+                                        <a class="aui_close" href="javascript:/*artDialog*/;">×</a></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="aui_icon" style="display: none;">
+                                    <div class="aui_iconBg" style="background: none;"></div>
+                                </td>
+                                <td class="aui_main" style="width: auto; height: auto;">
+                                    <div class="aui_content" style="padding: 20px 25px;"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="aui_footer">
+                                    <div class="aui_buttons" style="display: none;"></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+                <td class="aui_e"></td>
+            </tr>
+            <tr>
+                <td class="aui_sw"></td>
+                <td class="aui_s"></td>
+                <td class="aui_se" style="cursor: se-resize;"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="cardexplain">
+    <li class="nob">
+        <div class="beizhu">请先完善您的个人信息，红色为必填项</div>
+    </li>
+
+    <ul class="round">
+        <form th:action="@{/login/authentication}" style="border-top:1px solid #C6C6C6" method="post" id="myform">
+            <li>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                    <tbody>
+                    <tr>
+                        <th><font color="red">手机号码</font></th>
+                        <td><input onfocus="check2(this)" onblur="check3(this)" name="id" class="px" id="tel"
+                                   type="text" placeholder="请输入您的电话" style="background: red;"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                    <tbody>
+                    <tr>
+                        <th><font>真实姓名</font></th>
+                        <td><input style="" type="text" class="px" placeholder="请输入真实姓名"  name="name" value=""></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                    <tbody>
+                    <tr>
+                        <th><font>身份证号</font></th>
+                        <td><input style="" type="text" class="px" placeholder="请输入身份证号" id="carded" name="cardId"
+                                   value=""></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                    <tbody>
+                    <tr>
+                        <th><font>性别</font></th>
+                        <td><select style="line-height:35px;" id="c" name="sex" class="dropdown-select">
+                            <option value="-1" selected="">请选择性别</option>
+                            <option value="0">男</option>
+                            <option value="1">女</option>
+                        </select></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <div class="footReturn">
+                <button id="showcard" type="submit" class="submit" >提交信息</button>
+                <div class="window" id="windowcenter">
+                    <div id="title"  class="wtitle"><span class="close" id="alertclose"></span></div>
+                    <div class="content">
+                        <div id="txt"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ul>
+
+<p style="font-size: 30px;color:red"  th:text="${loginResult}">GIAO</p>
+
+
+    <script type="text/javascript">
+        // var openId = $(function(){
+        //     getOpenId();
+        // })
+
+        function getOpenId() {
+            $.ajax({
+                url: "/wechat/authorize",
+                type: "GET",
+                //获取到了openId
+                success:function(data){
+                    return data.data;
+                }
+            });
+        }
+        function login(){
+
+            var tel = $("#tel").val();
+
+            if (tel != undefined && tel == '') {
+                alert("请认真输入手机号");
+                return;
+            }
+            var truename = $("#b").val();
+
+            if ($.trim(b) == "") {
+                alert('请输入真实姓名');
+                return false;
+            }
+            var carded = $("#carded").val();
+
+            if ($.trim(carded) == "") {
+                alert('请输入身份证号');
+                return false;
+            }
+            var sex = $("#c").val();
+
+            if ($.trim(c) == "") {
+                alert('请输入性别');
+                return false;
+            }
+
+            //提交数据------------------
+            $.ajax({
+                url: "/login/authentication",
+                type: "POST",
+                data:{
+                    id:tel,
+                    openId:'oOFk61mZsaF9hUlNPMSiPjh7BG1g',
+                    name:truename,
+                    sex:sex,
+                    cardId:carded
+                },
+                success:function(data){
+                    if(data.code == 0){
+                        alert(333);
+                        layer.msg("认证成功");
+                        window.open("/reservation/toReservation");
+                    }else{
+                        alert(222);
+                        layer.msg(data.msg);
+                    }
+                },
+                error:function(){
+                    layer.closeAll();
+                }
+            });
+        }
+
+
+
+        function check2(obj) {
+            document.getElementById(obj.id).style.background = "white";
+        }
+
+        function check3(obj) {
+            if (obj.value == '') {
+                alert('手机号码必须填写');
+                document.getElementById(obj.id).style.background = "red";
+                return;
+            }
+            reg = /^0{0,1}(13[0-9]|145|15[0-9]|18[0-9])[0-9]{8}$/i;
+            if (!reg.test(obj.value)) {
+                alert("错误,请输入11位的手机号！");
+                document.getElementById(obj.id).style.background = "red";
+                return;
+            }
+        }
+    </script>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<div style="display: none; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; cursor: move; opacity: 0; background: rgb(255, 255, 255);"></div>
+</body>
+</html>

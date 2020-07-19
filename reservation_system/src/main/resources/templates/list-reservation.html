@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title></title>
+<link rel="stylesheet" href="/css/pintuer.css">
+<link rel="stylesheet" href="/css/admin.css">
+<script src="/js/jquery.js"></script>
+<script src="/js/pintuer.js"></script>
+</head>
+<body>
+<div class="panel admin-panel">
+  <div class="panel-head"><strong class="icon-reorder"> 预约名单</strong></div>
+<!--   <select name="s_istop" id="s_istop"  class="input" style="width:100px; line-height:17px;display:inline-block">-->
+<!--            <option value="3">工作窗口</option>-->
+<!--            <option value="2">员工姓名</option>-->
+<!--            <option value="1">员工编号</option>-->
+<!--          </select>-->
+<!--          <input type="text" placeholder="请输入搜索关键字" name="keywords" id="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />-->
+<!--          <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a>-->
+  </div>
+  <table class="table table-hover text-center">
+    <tr>
+      <th width="10%">预约序号</th>
+      <th width="10%">手机号</th>
+      <th width="10%">预约窗口号</th>
+      <th width="10%">预约时间</th>
+      <th width="10%">状态</th>
+      <th width="10%">操作</th>
+    </tr>
+    <tr th:each="reservation : ${reservations}">
+        <td th:text="${reservation.id}">预约序号</td>
+        <td th:text="${reservation.sid}">手机号</td>
+        <td th:text="${reservation.wid}">预约窗口号</td>
+        <td th:text="${#dates.format((reservation.createTime),'yyyy-MM-dd HH:mm:ss')}"></td>
+
+        <td th:text="正在办理" th:if="${reservation.state} eq 0">状态</td>
+        <td th:text="等待中" th:if="${reservation.state} eq -1">状态</td>
+        <td th:text="已完成" th:if="${reservation.state} eq 1">状态</td>
+
+<!--
+    状态为-1的等待状态，只有第一个的 会出现 开始预约按钮。
+    状态为0是正在办理状态，有 开始预约按钮。
+    状态为1是已经完成状态。并且把 开始预约 取消。
+-->
+        <td>
+
+            </div>
+            <div class="button-group">
+                 <a class="button border-main" th:if="${reservation.state} ne 1" th:href="@{/employee/handle(rid=${reservation.id},wid=${reservation.wid})}"><span class="icon-edit"></span> 开始办理</a>
+            </div>
+        </td>
+    </tr>
+  </table>
+
+</body></html>

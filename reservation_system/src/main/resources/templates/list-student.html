@@ -1,0 +1,46 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title></title>
+<link rel="stylesheet" href="/css/pintuer.css">
+<link rel="stylesheet" href="/css/admin.css">
+<script src="/js/jquery.js"></script>
+<script src="/js/pintuer.js"></script>
+</head>
+<body>
+<div class="panel admin-panel">
+  <div class="panel-head"><strong class="icon-reorder"> 学生信息</strong></div>
+   <select name="s_istop" id="s_istop"  class="input" style="width:100px; line-height:17px;display:inline-block">
+            <option value="3">学生姓名</option>
+            <option value="2">身份证号码</option>
+          </select>
+          <input type="text" placeholder="请输入搜索关键字" name="keywords" id="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
+          <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a>
+      </ul>
+  </div>
+  <table class="table table-hover text-center">
+    <tr>
+      <th width="10%">学生姓名</th>
+      <th width="10%">手机号码</th>
+      <th width="10%">性别</th>
+      <th width="10%">身份证号码</th>
+      <th width="10%">操作</th>
+    </tr>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.name}">${employee.id}</td>
+        <td th:text="${student.id}">${employee.id}</td>
+        <td th:if="${student.sex} eq 1" th:text="男">${employee.}</td>
+        <td th:if="${student.sex} eq 2" th:text="女">${employee.}</td>
+        <td th:text="${student.cardId}">${alldoctor.dTel}</td>
+
+        <td><div class="button-group">
+            <a class="button border-main" th:href="'/student/updateById?id='+${student.id} "><span class="icon-edit"></span> 修改</a>
+            <a class="button border-red" th:href="'/student/deleteById?id='+${student.id}"><span class="icon-trash-o"></span> 删除</a>
+        </div></td>
+    </tr>
+  </table>
+</body></html>

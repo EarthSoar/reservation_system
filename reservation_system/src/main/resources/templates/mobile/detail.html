@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="微信排队，排队先知">
+    <title>预约详情页</title>
+    <script type="text/javascript" src="https://t.vvo2o.com/tpl/Home/vmcms/common/js/jQuery.js"></script>
+    <style id="__WXWORK_INNER_SCROLLBAR_CSS">::-webkit-scrollbar {
+        width: 12px !important;
+        height: 12px !important;
+    }
+
+    ::-webkit-scrollbar-track:vertical {
+    }
+
+    ::-webkit-scrollbar-thumb:vertical {
+        background-color: rgba(136, 141, 152, 0.5) !important;
+        border-radius: 10px !important;
+        background-clip: content-box !important;
+        border: 2px solid transparent !important;
+    }
+
+    ::-webkit-scrollbar-track:horizontal {
+    }
+
+    ::-webkit-scrollbar-thumb:horizontal {
+        background-color: rgba(136, 141, 152, 0.5) !important;
+        border-radius: 10px !important;
+        background-clip: content-box !important;
+        border: 2px solid transparent !important;
+    }
+
+    ::-webkit-resizer {
+        display: none !important;
+    }</style>
+    <script src="https://t.vvo2o.com/tpl/Wap/default/common/css/guajiang/alert.js?v=9" type="text/javascript"></script>
+    <style type="text/css">
+
+        .windowmy {
+            width: 290px;
+            position: fixed;
+            display: none;
+            left: 50%;
+            z-index: 9999;
+            margin: -50px auto 0 -145px;
+            padding: 2px;
+            border-radius: 0.6em;
+            -webkit-border-radius: 0.6em;
+            -moz-border-radius: 0.6em;
+            background-color: #ffffff;
+            -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            font: 14px/1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+        }
+
+        .windowmy .title {
+
+            background-color: #A3A2A1;
+            line-height: 26px;
+            padding: 5px 5px 5px 10px;
+            color: #ffffff;
+            font-size: 16px;
+            border-radius: 0.5em 0.5em 0 0;
+            -webkit-border-radius: 0.5em 0.5em 0 0;
+            -moz-border-radius: 0.5em 0.5em 0 0;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#585858), to(#565656)); /* Saf4+, Chrome */
+            background-image: -webkit-linear-gradient(#585858, #565656); /* Chrome 10+, Saf5.1+ */
+            background-image: -moz-linear-gradient(#585858, #565656); /* FF3.6 */
+            background-image: -ms-linear-gradient(#585858, #565656); /* IE10 */
+            background-image: -o-linear-gradient(#585858, #565656); /* Opera 11.10+ */
+            background-image: linear-gradient(#585858, #565656);
+
+        }
+
+        .windowmy .content {
+            /*min-height:100px;*/
+            overflow: auto;
+            padding: 10px;
+            background: linear-gradient(#FBFBFB, #EEEEEE) repeat scroll 0 0 #FFF9DF;
+            color: #222222;
+            text-shadow: 0 1px 0 #FFFFFF;
+            border-radius: 0 0 0.6em 0.6em;
+            -webkit-border-radius: 0 0 0.6em 0.6em;
+            -moz-border-radius: 0 0 0.6em 0.6em;
+        }
+
+        .windowmy #txt {
+            min-height: 30px;
+            font-size: 16px;
+            line-height: 22px;
+        }
+
+        .windowmy .txtbtn {
+
+            background: #f1f1f1;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#DCDCDC), to(#f1f1f1)); /* Saf4+, Chrome */
+            background-image: -webkit-linear-gradient(#ffffff, #DCDCDC); /* Chrome 10+, Saf5.1+ */
+            background-image: -moz-linear-gradient(#ffffff, #DCDCDC); /* FF3.6 */
+            background-image: -ms-linear-gradient(#ffffff, #DCDCDC); /* IE10 */
+            background-image: -o-linear-gradient(#ffffff, #DCDCDC); /* Opera 11.10+ */
+            background-image: linear-gradient(#ffffff, #DCDCDC);
+            border: 1px solid #CCCCCC;
+            border-bottom: 1px solid #B4B4B4;
+            color: #555555;
+            font-weight: bold;
+            text-shadow: 0 1px 0 #FFFFFF;
+            border-radius: 0.6em 0.6em 0.6em 0.6em;
+            display: block;
+            width: 100%;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+            text-align: windowcenter;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 6px;
+            margin: 10px 0 0 0;
+        }
+
+        .windowmy .txtbtn:visited {
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#cccccc)); /* Saf4+, Chrome */
+            background-image: -webkit-linear-gradient(#ffffff, #cccccc); /* Chrome 10+, Saf5.1+ */
+            background-image: -moz-linear-gradient(#ffffff, #cccccc); /* FF3.6 */
+            background-image: -ms-linear-gradient(#ffffff, #cccccc); /* IE10 */
+            background-image: -o-linear-gradient(#ffffff, #cccccc); /* Opera 11.10+ */
+            background-image: linear-gradient(#ffffff, #cccccc);
+        }
+
+        .windowmy .txtbtn:hover {
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#cccccc)); /* Saf4+, Chrome */
+            background-image: -webkit-linear-gradient(#ffffff, #cccccc); /* Chrome 10+, Saf5.1+ */
+            background-image: -moz-linear-gradient(#ffffff, #cccccc); /* FF3.6 */
+            background-image: -ms-linear-gradient(#ffffff, #cccccc); /* IE10 */
+            background-image: -o-linear-gradient(#ffffff, #cccccc); /* Opera 11.10+ */
+            background-image: linear-gradient(#ffffff, #cccccc);
+        }
+
+        .windowmy .txtbtn:active {
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#cccccc), to(#ffffff)); /* Saf4+, Chrome */
+            background-image: -webkit-linear-gradient(#cccccc, #ffffff); /* Chrome 10+, Saf5.1+ */
+            background-image: -moz-linear-gradient(#cccccc, #ffffff); /* FF3.6 */
+            background-image: -ms-linear-gradient(#cccccc, #ffffff); /* IE10 */
+            background-image: -o-linear-gradient(#cccccc, #ffffff); /* Opera 11.10+ */
+            background-image: linear-gradient(#cccccc, #ffffff);
+            border: 1px solid #C9C9C9;
+            border-top: 1px solid #B4B4B4;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) inset;
+        }
+
+        .windowmy .title .close {
+            float: right;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACTSURBVEhL7dNtCoAgDAZgb60nsGN1tPLVCVNHmg76kQ8E1mwv+GG27cestQ4PvTZ69SFocBGpWa8+zHt/Up+IN+MhgLlUmnIE1CpBQB2COZibfpnXhHFaIZkYph0SOeeK/QJ8o7KOek84fkCWSBtfL+Ny2MPpCkPFMH6PWEhWhKncIyEk69VfiUuVhqJefds+YcwNbEwxGqGIFWYAAAAASUVORK5CYII=");
+            width: 26px;
+            height: 26px;
+            display: block;
+        }
+    </style>
+</head>
+<body class="activity-coupon-winning">
+<div class="windowmy" id="windowcenter">
+    <div id="title" class="title">消息提醒<span class="close" id="alertclose"></span></div>
+    <div class="content">
+        <div id="txt"></div>
+        <input type="button" value="确定" id="windowclosebutton" name="确定" class="txtbtn">
+    </div>
+</div>
+<link href="https://t.vvo2o.com/tpl/static/public_them/css/activity-style-red.css?v=14" rel="stylesheet"
+      type="text/css">
+<link href="https://t.vvo2o.com/tpl/static/public_them/css/common_module.css?v=18" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="https://t.vvo2o.com/tpl/Home/vmcms/common/js/modal.js"></script>
+<div class="main">
+    <div class="boxcontent  ">
+        <div>
+            <li class="user-li">
+                <figure class="user-figure">
+                    <div class="user-name">
+                        <figcaption th:text="${student.name}"></figcaption>
+                    </div>
+                </figure>
+            </li>
+        </div>
+        <div style="clear:left;"></div>
+    </div>
+    <div class="boxcontent boxwhite">
+        <div class="box">
+            <div class="title-brown"><span>当前进度</span></div>
+            <div class="Detail"><p>排队类目：<span th:text="${window.id} + '号窗口'" class="key-info" style="font-size: 30px">①号窗口</span></p>
+                <p>正在受理号 ：<span class="key-info" th:if="${window.currentSid} eq -1" th:text="无" style="font-size: 30px">无</span>
+                    <span class="key-info" th:if="${window.currentSid} ne -1" th:text="${window.currentSid}" style="font-size: 30px">无</span>
+                </p>
+                <p>等候人数： <span th:text="${window.waitCount}" class="key-info" style="font-size: 30px">0</span></p></div>
+        </div>
+    </div>
+    <div class="boxcontent boxwhite">
+        <div class="box">
+            <div class="title-brown"><span>提醒</span></div>
+            <div class="Detail">
+                <div style="word-break:break-all;word-wrap:nowrap;white-space:normal;"><p>
+                    <span style="line-height:24px;font-family:&quot;font-size:16px;"><span
+                            style="font-family:&quot;font-size:16px;"><span style="color:#E53333;"><span
+                            style="color:#E53333;line-height:24px;font-family:&quot;font-size:16px;"><span
+                            style="color:#E53333;line-height:24px;font-family:&quot;font-size:16px;">温馨提示：</span><b><span
+                            style="color:#000000;">此窗口每天限定排号50人，请选择人数少的窗口进行排号……</span></b></span></span></span></span>
+                </p>
+                    <span style="line-height:1.5;"></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="clear:both;"></div>
+
+<br>
+<br>
+
+
+<div align="center" background="black">
+    <p><span th:text="${result}" class="key-info" style="font-size: 30px;color:white" >预约成功！！</span></p>
+    <a  class="small-right-btn" th:href='@{/reservation/doReservation(wid=${window.id},sid=${student.id})}'>我要排队</a>
+</div>
+</body>
+</html>
